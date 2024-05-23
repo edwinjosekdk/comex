@@ -1,0 +1,25 @@
+body {
+    font-family: "Montserrat", sans-serif !important;
+    background-color: #eaeaea;
+    margin: 0;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#canvas {
+    width: 100%;
+    height: auto;
+}
+
+.btn-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
