@@ -6,6 +6,7 @@ function generateImage() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const downloadLink = document.getElementById('download');
+    const shareLink = document.getElementById('share');
 
     // Check if all fields are filled
     if (!name || !designation || !company || !profpicInput.files || !profpicInput.files[0]) {
@@ -83,6 +84,7 @@ function generateImage() {
                 // Enable the download link
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.classList.remove('btn-disabled');
+                shareLink.classList.remove('btn-disabled');
             };
         };
     };
@@ -93,7 +95,9 @@ function generateImage() {
 // Initial setup for download link (empty image)
 window.onload = () => {
     const downloadLink = document.getElementById('download');
+    const shareLink = document.getElementById('share');
     downloadLink.classList.add('btn-disabled');
+    shareLink.classList.add('btn-disabled');
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -105,3 +109,27 @@ window.onload = () => {
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
 };
+
+
+document.getElementById('share').addEventListener('click', () => {
+    const canvas = document.getElementById('canvas');
+    canvas.toBlob((blob) => {
+        const file = new File([blob], 'generated_image.png', { type: 'image/png' });
+        const filesArray = [file];
+        const shareData = {
+            files: filesArray,
+            title: 'I am attending COMEX 2024',
+            text: 'Join me by registering at www.comex-global.com'
+        };
+
+        if (navigator.canShare && navigator.canShare(shareData)) {
+            navigator.share(shareData).then(() => {
+                console.log('Image shared successfully.');
+            }).catch((error) => {
+                console.error('Error sharing image:', error);
+            });
+        } else {
+            alert('Sharing not supported on this browser. Please download the image and share it manually.');
+        }
+    })
+})

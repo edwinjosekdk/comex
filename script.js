@@ -7,6 +7,7 @@ function generateImage() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const downloadLink = document.getElementById('download');
+    const shareLink = document.getElementById('share');
 
     // Check if all fields are filled
     if (!name || !designation || !company || !booth || !profpicInput.files || !profpicInput.files[0]) {
@@ -86,6 +87,7 @@ function generateImage() {
                 // Enable the download link
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.classList.remove('btn-disabled');
+                shareLink.classList.remove('btn-disabled');
             };
         };
     };
@@ -96,7 +98,9 @@ function generateImage() {
 // Initial setup for download link (empty image)
 window.onload = () => {
     const downloadLink = document.getElementById('download');
+    const shareLink = document.getElementById('share');
     downloadLink.classList.add('btn-disabled');
+    shareLink.classList.add('btn-disabled');
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');

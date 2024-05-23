@@ -15,12 +15,12 @@
 </head>
 
 <body>
-    <div class="container py-4">
+    <div class="container-lg py-4">
         <div>
             <h1 class="text-center mb-4">COMEX Image Generator</h1>
         </div>
-        <div class="d-flex gap-4">
-            <section class="card mx-auto" style="width: 34rem;">
+        <div class="main-set d-flex gap-4">
+            <section class="left card mx-auto">
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="w-100 mb-2">Category</label>
@@ -50,7 +50,7 @@
                         <label for="profpic">Profile Picture</label>
                         <input class="form-control" type="file" id="profpic" accept="image/*" disabled>
                     </div>
-                    <div class="d-flex gap-3 justify-content-center">
+                    <div class="button-set d-flex gap-3 justify-content-center">
                         <div>
                             <button class="btn btn-primary" onclick="generateImage()" disabled>Generate Image</button>
                         </div>
@@ -62,8 +62,7 @@
                 </div>
             </section>
             <div class="canvas-container card">
-                <div
-                    style="width: 900px; height: 900px;user-select: none;pointer-events: none; background-color: #eaeaea;">
+                <div class="empty-box">
                 </div>
             </div>
         </div>
